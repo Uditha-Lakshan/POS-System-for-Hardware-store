@@ -24,7 +24,7 @@
                 <Button Content="Billing" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Billing_Click"/>
                 <Button Content="Dashboard" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Dashboard_Click"/>
 
-                <Button Content="Logout" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Margin="0,200,0,0"/>
+                <Button Content="LOGOUT" Background="#E6005C" Foreground="White" Height="40" Margin="10,50,10,10" FontWeight="Bold" Click="BtnLogout_Click"/>
             </StackPanel>
         </Border>
 

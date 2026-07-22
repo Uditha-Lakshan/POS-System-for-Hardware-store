@@ -14,13 +14,22 @@ namespace HardwareShop.Pages
             InitializeComponent();
         }
 
-        // This runs every time the dashboard is clicked, ensuring numbers are always up to date
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            int totalItems = _db.Items.Sum(i => i.ItStock);
-            int totalCustomers = _db.Customers.Count();
-            decimal totalDebt = _db.Customers.Sum(c => c.CurrentDebt);
+            // Calculate total stock safely in C#
+            int totalItems = _db.Items
+                               .AsEnumerable()
+                               .Sum(i => i.ItStock);
 
+            // Count customers
+            int totalCustomers = _db.Customers.Count();
+
+            // Calculate total debt safely using .AsEnumerable() to prevent SQLite decimal errors
+            decimal totalDebt = _db.Customers
+                                   .AsEnumerable()
+                                   .Sum(c => c.CurrentDebt);
+
+            // Update UI elements
             txtTotalItems.Text = totalItems.ToString();
             txtTotalCustomers.Text = totalCustomers.ToString();
             txtTotalDebt.Text = $"${totalDebt:F2}";

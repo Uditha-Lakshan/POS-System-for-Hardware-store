@@ -67,3 +67,6 @@ C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\Pages\Ite
 C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\Pages\CategoriesPage.g.cs
 C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\Pages\DashboardPage.g.cs
 C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\Pages\ItemsPage.g.cs
+C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\HardwareShop.sourcelink.json
+C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\LoginWindow.baml
+C:\Users\udith\source\repos\hardware\hardware\obj\Debug\net8.0-windows\LoginWindow.g.cs

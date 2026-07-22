@@ -8,6 +8,7 @@ namespace HardwareShop.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<BillItem> BillItems { get; set; }
+        public DbSet<User> Users { get; set; }
 
         // THIS LINE AUTOMATICALLY BUILDS THE TABLES
         public ShopDbContext()

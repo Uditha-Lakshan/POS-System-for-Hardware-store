@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HardwareShop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a0b4da747ab11d94100f82e20fd7241dc55340d")]
 [assembly: System.Reflection.AssemblyProductAttribute("HardwareShop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HardwareShop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

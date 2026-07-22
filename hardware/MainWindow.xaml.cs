@@ -38,5 +38,17 @@ namespace HardwareShop
         {
             MainFrame.Navigate(new DashboardPage());
         }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            // 1. Create a new instance of the Login Window
+            LoginWindow loginWindow = new LoginWindow();
+
+            // 2. Show the Login Window
+            loginWindow.Show();
+
+            // 3. Close the current Main Window
+            this.Close();
+        }
     }
 }
