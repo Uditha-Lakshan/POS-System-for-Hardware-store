@@ -1,45 +1,71 @@
-﻿<!-- MainWindow.xaml -->
 <Window x:Class="HardwareShop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hardware Shop Management System 2.0" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+        Title="Nimal Hardware Store POS System 2.0" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="240"/>
             <!-- Sidebar -->
             <ColumnDefinition Width="*"/>
             <!-- Main Content -->
         </Grid.ColumnDefinitions>
 
-        <!-- LEFT SIDEBAR (Teal Color from images) -->
-        <Border Grid.Column="0" Background="#008F8F">
-            <StackPanel Margin="0,50,0,0">
-                <!-- Logo Area -->
-                <Image Source="Assets/logo.png" Height="80" Margin="10"/>
+        <!-- LEFT SIDEBAR -->
+        <Border Grid.Column="0" Background="#0F172A">
+            <DockPanel>
+                <!-- Title & Logo Area -->
+                <StackPanel DockPanel.Dock="Top" Margin="20,25,20,30">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,8">
+                        <Border Width="38" Height="38" Background="#0D9488" CornerRadius="19" Margin="0,0,10,0">
+                            <TextBlock Text="🛠️" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="NIMAL" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                            <TextBlock Text="HARDWARE" Foreground="#14B8A6" FontSize="12" FontWeight="Bold" Margin="0,-2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="Point of Sale System v2.0" Foreground="#64748B" FontSize="11" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Logout Button at Bottom -->
+                <Button DockPanel.Dock="Bottom" Content="🚪 LOGOUT" Background="#EF4444" Foreground="White" Height="42" Margin="15,20,15,20" FontWeight="Bold" Click="BtnLogout_Click" Cursor="Hand"/>
 
                 <!-- Navigation Buttons -->
-                <Button Content="Items" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Items_Click"/>
-                <Button Content="Categories" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Categories_Click"/>
-                <Button Content="Customer" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Customer_Click"/>
-                <Button Content="Billing" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Billing_Click"/>
-                <Button Content="Dashboard" Height="50" Background="Transparent" Foreground="White" FontSize="16" BorderThickness="0" Click="Nav_Dashboard_Click"/>
-
-                <Button Content="LOGOUT" Background="#E6005C" Foreground="White" Height="40" Margin="10,50,10,10" FontWeight="Bold" Click="BtnLogout_Click"/>
-            </StackPanel>
+                <StackPanel DockPanel.Dock="Top">
+                    <Button x:Name="btnNavBilling" Content="⚡  Billing &amp; POS" Height="48" Background="#0D9488" Foreground="White" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,3" HorizontalContentAlignment="Left" Padding="20,0,0,0" Click="Nav_Billing_Click" Cursor="Hand"/>
+                    <Button x:Name="btnNavItems" Content="📦  Items Inventory" Height="48" Background="Transparent" Foreground="#94A3B8" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,3" HorizontalContentAlignment="Left" Padding="20,0,0,0" Click="Nav_Items_Click" Cursor="Hand"/>
+                    <Button x:Name="btnNavCategories" Content="🏷️  Categories" Height="48" Background="Transparent" Foreground="#94A3B8" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,3" HorizontalContentAlignment="Left" Padding="20,0,0,0" Click="Nav_Categories_Click" Cursor="Hand"/>
+                    <Button x:Name="btnNavCustomer" Content="👥  Customers &amp; Debt" Height="48" Background="Transparent" Foreground="#94A3B8" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,3" HorizontalContentAlignment="Left" Padding="20,0,0,0" Click="Nav_Customer_Click" Cursor="Hand"/>
+                    <Button x:Name="btnNavDashboard" Content="📊  Store Analytics" Height="48" Background="Transparent" Foreground="#94A3B8" FontSize="14" FontWeight="SemiBold" BorderThickness="0" Margin="10,3" HorizontalContentAlignment="Left" Padding="20,0,0,0" Click="Nav_Dashboard_Click" Cursor="Hand"/>
+                </StackPanel>
+            </DockPanel>
         </Border>
 
         <!-- RIGHT CONTENT AREA -->
-        <Grid Grid.Column="1" Background="White">
+        <Grid Grid.Column="1" Background="#F8FAFC">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="55"/>
                 <!-- Header -->
                 <RowDefinition Height="*"/>
                 <!-- Active Page -->
             </Grid.RowDefinitions>
 
             <!-- Top Header -->
-            <Border Grid.Row="0" Background="#008F8F">
-                <TextBlock Text="Hardware Shop Management System 2.0" Foreground="White" FontSize="18" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <Border Grid.Row="0" Background="#1E293B" Padding="25,0">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock x:Name="txtPageHeader" Text="Billing &amp; Point of Sale" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock Text="  |  Nimal Hardware Store" Foreground="#94A3B8" FontSize="14" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Border Background="#0F172A" CornerRadius="15" Padding="12,5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🟢 System Active" Foreground="#34D399" FontSize="12" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <!-- Pages will load inside this frame -->

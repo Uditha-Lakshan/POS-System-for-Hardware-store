@@ -1,53 +1,81 @@
-﻿using System.Windows;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using HardwareShop.Pages;
 
 namespace HardwareShop
 {
     public partial class MainWindow : Window
     {
+        private Brush _activeBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0D9488"));
+        private Brush _transparentBrush = Brushes.Transparent;
+        private Brush _activeTextBrush = Brushes.White;
+        private Brush _inactiveTextBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#94A3B8"));
+
         public MainWindow()
         {
             InitializeComponent();
-            // Using the correct class name
-            MainFrame.Navigate(new BillingPage());
+            NavigateTo(new BillingPage(), btnNavBilling, "Billing & Point of Sale");
+        }
+
+        private void SetActiveButton(Button activeButton)
+        {
+            Button[] buttons = new[] { btnNavBilling, btnNavItems, btnNavCategories, btnNavCustomer, btnNavDashboard };
+            foreach (var btn in buttons)
+            {
+                if (btn != null)
+                {
+                    btn.Background = _transparentBrush;
+                    btn.Foreground = _inactiveTextBrush;
+                }
+            }
+
+            if (activeButton != null)
+            {
+                activeButton.Background = _activeBrush;
+                activeButton.Foreground = _activeTextBrush;
+            }
+        }
+
+        private void NavigateTo(Page page, Button navButton, string headerTitle)
+        {
+            MainFrame.Navigate(page);
+            SetActiveButton(navButton);
+            if (txtPageHeader != null)
+            {
+                txtPageHeader.Text = headerTitle;
+            }
         }
 
         private void Nav_Items_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new ItemsPage());
+            NavigateTo(new ItemsPage(), btnNavItems, "Items Management");
         }
 
         private void Nav_Categories_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new CategoriesPage());
+            NavigateTo(new CategoriesPage(), btnNavCategories, "Category Management");
         }
 
         private void Nav_Customer_Click(object sender, RoutedEventArgs e)
         {
-            // Using the correct class name
-            MainFrame.Navigate(new CustomerPage());
+            NavigateTo(new CustomerPage(), btnNavCustomer, "Customer & Credit Management");
         }
 
         private void Nav_Billing_Click(object sender, RoutedEventArgs e)
         {
-            // Using the correct class name
-            MainFrame.Navigate(new BillingPage());
+            NavigateTo(new BillingPage(), btnNavBilling, "Billing & Point of Sale");
         }
 
         private void Nav_Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new DashboardPage());
+            NavigateTo(new DashboardPage(), btnNavDashboard, "Store Analytics & Dashboard");
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Create a new instance of the Login Window
             LoginWindow loginWindow = new LoginWindow();
-
-            // 2. Show the Login Window
             loginWindow.Show();
-
-            // 3. Close the current Main Window
             this.Close();
         }
     }
